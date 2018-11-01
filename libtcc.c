@@ -497,9 +497,9 @@ static void error1(TCCState *s1, int is_warning, const char *fmt, va_list ap)
         strcat_printf(buf, sizeof(buf), "tcc: ");
     }
     if (is_warning)
-        strcat_printf(buf, sizeof(buf), "warning: ");
+        strcat_printf(buf, sizeof(buf), "\033[33mwarning: \033[0m");
     else
-        strcat_printf(buf, sizeof(buf), "error: ");
+        strcat_printf(buf, sizeof(buf), "\033[31merror: \033[0m");
     strcat_vprintf(buf, sizeof(buf), fmt, ap);
 
     if (!s1->error_func) {
