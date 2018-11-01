@@ -257,7 +257,11 @@ int main(int argc0, char **argv0)
 
 redo:
     argc = argc0, argv = argv0;
+    // Throw a error if no args specified
     s = tcc_new();
+    if (argc == 1) {
+            return tcc_error("no input args"), 1;
+    }
     opt = tcc_parse_args(s, &argc, &argv, 1);
 
     if ((n | t) == 0) {
